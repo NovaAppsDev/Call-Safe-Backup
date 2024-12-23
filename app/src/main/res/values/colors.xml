@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+
+    <color name="primaryColor">#93CB80</color>
+    <color name="onPrimaryColor">#ffff</color>
+
+
+
+    <color name="statusBarColor">#93CB80</color>
+    <color name="backgroundNavigationBar">#ffff</color>
+    <color name="backgroundButtonMain">#4EBD28</color>
 </resources>
