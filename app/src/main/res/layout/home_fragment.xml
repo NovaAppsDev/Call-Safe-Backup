@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.IntroFragment">
 
@@ -42,14 +43,15 @@
         app:cardBackgroundColor="@color/primaryColor"
         android:layout_below="@+id/topAppBar">
         <RelativeLayout
-            android:padding="24dp"
+            android:padding="12dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
                 android:textColor="@color/onPrimaryColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dashboard"
+                android:text="میز کار"
+                android:fontFamily="@font/iransansweb_fanum"
                 android:textStyle="bold"
                 android:textSize="24sp"/>
 
@@ -68,7 +70,8 @@
                         android:textColor="@color/onPrimaryColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Contact numbers"
+                        android:text="تعداد کل مخاطبین"
+                        android:fontFamily="@font/iransansweb_fanum"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
                     <TextView
@@ -76,6 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="218"
+                        android:fontFamily="@font/iransansweb_fanum"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
                 </LinearLayout>
@@ -88,7 +92,8 @@
                         android:textColor="@color/onPrimaryColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CallLogs numbers"
+                        android:text="تعداد کل گزارش تماس"
+                        android:fontFamily="@font/iransansweb_fanum"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
                     <TextView
@@ -96,6 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="518"
+                        android:fontFamily="@font/iransansweb_fanum"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
                 </LinearLayout>

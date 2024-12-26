@@ -13,6 +13,8 @@ navigation="2.8.3"
 lifecycle="2.8.6"
 lifecycleExtensions="2.2.0"
 fragmentKtx = "1.8.4"
+hilt="2.52"
+ksp="2.0.20-1.0.25"
 
 
 [libraries]
@@ -30,8 +32,14 @@ lifecycle-viewmodel={group="androidx.lifecycle",name="lifecycle-viewmodel-ktx",v
 lifecycle-runtime={group="androidx.lifecycle",name="lifecycle-runtime-ktx",version.ref="lifecycle"}
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
 
+hilt={group="com.google.dagger",name="hilt-android",version.ref="hilt"}
+hilt-compiler={group="com.google.dagger",name="hilt-compiler",version.ref="hilt"}
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 navigation= {id="androidx.navigation.safeargs.kotlin",version.ref="navigation"}
+hiltAndroid={id ="com.google.dagger.hilt.android",version.ref="hilt"}
+ksp={id="com.google.devtools.ksp",version.ref="ksp"}

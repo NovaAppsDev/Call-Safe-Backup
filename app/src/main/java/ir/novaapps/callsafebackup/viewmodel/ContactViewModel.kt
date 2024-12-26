@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ir.novaapps.callsafebackup.data.domain.model.ContactModel
+import ir.novaapps.callsafebackup.data.domain.repository.ContactRepository
 import ir.novaapps.callsafebackup.data.domain.usecase.GetContactUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
