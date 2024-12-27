@@ -11,13 +11,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ir.novaapps.callsafebackup.R
 import ir.novaapps.callsafebackup.databinding.IntroFragmentBinding
 import ir.novaapps.callsafebackup.utils.BaseFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class IntroFragment : BaseFragment<IntroFragmentBinding>() {
 
     override val bindingInflater: (inflater: LayoutInflater) -> IntroFragmentBinding
