@@ -1,26 +1,26 @@
 package ir.novaapps.callsafebackup.view.contact
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.internal.Contexts.getApplication
 import ir.novaapps.callsafebackup.R
 import ir.novaapps.callsafebackup.databinding.ContactFragmentBinding
-import ir.novaapps.callsafebackup.databinding.IntroFragmentBinding
 import ir.novaapps.callsafebackup.utils.BaseFragment
 import ir.novaapps.callsafebackup.viewmodel.MainViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class ContactFragment : BaseFragment<ContactFragmentBinding>() {
@@ -31,6 +31,16 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
     private val mainViewModel: MainViewModel by viewModels()
 
     private var contactAdapter: ContactAdapter = ContactAdapter()
+
+    private var FAB_Status = false
+
+    //Animations
+    var show_fab_1: Animation? = null
+    var hide_fab_1: Animation? = null
+    var show_fab_2: Animation? = null
+    var hide_fab_2: Animation? = null
+    var show_fab_3: Animation? = null
+    var hide_fab_3: Animation? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +54,15 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Animations
+        show_fab_1 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab1_show);
+        hide_fab_1 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab1_hide);
+        show_fab_2 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab2_show);
+        hide_fab_2 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab2_hide);
+        show_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_show);
+        hide_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_hide);
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mainViewModel.contacts.collect { list ->
@@ -54,6 +73,29 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
                         updateUi(false)
                     }
                 }
+            }
+        }
+
+        binding.apply {
+            fab.setOnClickListener {
+                if (FAB_Status ==false){
+                    expandFAB()
+                }else{
+                    hideFAB()
+                }
+            }
+
+            layoutInclude.fab1.setOnClickListener {
+                Toast.makeText(requireContext(),"Click on FAB 1" , Toast.LENGTH_SHORT).show()
+                hideFAB()
+            }
+            layoutInclude.fab2.setOnClickListener {
+                Toast.makeText(requireContext(),"Click on FAB 2" , Toast.LENGTH_SHORT).show()
+                hideFAB()
+            }
+            layoutInclude.fab3.setOnClickListener {
+                Toast.makeText(requireContext(),"Click on FAB 3" , Toast.LENGTH_SHORT).show()
+                hideFAB()
             }
         }
     }
@@ -79,6 +121,64 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
             adapter = contactAdapter
             contactAdapter.onItemClick { userEntity ->
             }
+        }
+    }
+
+    private fun expandFAB() {
+        binding.apply {
+            fab.setImageResource(R.drawable.icon_close)
+            FAB_Status = true
+            val layoutParams1 = layoutInclude.fab1.layoutParams as FrameLayout.LayoutParams
+            layoutParams1.rightMargin += (layoutInclude.fab1.width * 1.7).toInt()
+            layoutParams1.bottomMargin += (layoutInclude.fab1.height * 0.25).toInt()
+            layoutInclude.fab1.layoutParams = layoutParams1
+            layoutInclude.fab1.startAnimation(show_fab_1)
+            layoutInclude.fab1.isClickable = true
+
+            // Floating Action Button 2
+            val layoutParams2 = layoutInclude.fab2.layoutParams as FrameLayout.LayoutParams
+            layoutParams2.rightMargin += (layoutInclude.fab2.width * 1.5).toInt()
+            layoutParams2.bottomMargin += (layoutInclude.fab2.height * 1.5).toInt()
+            layoutInclude.fab2.layoutParams = layoutParams2
+            layoutInclude.fab2.startAnimation(show_fab_2)
+            layoutInclude.fab2.isClickable = true
+
+            // Floating Action Button 3
+            val layoutParams3 = layoutInclude.fab3.layoutParams as FrameLayout.LayoutParams
+            layoutParams3.rightMargin += (layoutInclude.fab3.width * 0.25).toInt()
+            layoutParams3.bottomMargin += (layoutInclude.fab3.height * 1.7).toInt()
+            layoutInclude.fab3.layoutParams = layoutParams3
+            layoutInclude.fab3.startAnimation(show_fab_3)
+            layoutInclude.fab3.isClickable = true
+        }
+    }
+
+    private fun hideFAB() {
+        binding.apply {
+            fab.setImageResource(R.drawable.icon_fab_export)
+            FAB_Status = false;
+            val layoutParams1 = layoutInclude.fab1.layoutParams as FrameLayout.LayoutParams
+            layoutParams1.rightMargin -= (layoutInclude.fab1.width * 1.7).toInt()
+            layoutParams1.bottomMargin -= (layoutInclude.fab1.height * 0.25).toInt()
+            layoutInclude.fab1.layoutParams = layoutParams1
+            layoutInclude.fab1.startAnimation(hide_fab_1)
+            layoutInclude.fab1.isClickable = false
+
+            // Floating Action Button 2
+            val layoutParams2 = layoutInclude.fab2.layoutParams as FrameLayout.LayoutParams
+            layoutParams2.rightMargin -= (layoutInclude.fab2.width * 1.5).toInt()
+            layoutParams2.bottomMargin -= (layoutInclude.fab2.height * 1.5).toInt()
+            layoutInclude.fab2.layoutParams = layoutParams2
+            layoutInclude.fab2.startAnimation(hide_fab_2)
+            layoutInclude.fab2.isClickable = false
+
+            // Floating Action Button 3
+            val layoutParams3 = layoutInclude.fab3.layoutParams as FrameLayout.LayoutParams
+            layoutParams3.rightMargin -= (layoutInclude.fab3.width * 0.25).toInt()
+            layoutParams3.bottomMargin -= (layoutInclude.fab3.height * 1.7).toInt()
+            layoutInclude.fab3.layoutParams = layoutParams3
+            layoutInclude.fab3.startAnimation(hide_fab_3)
+            layoutInclude.fab3.isClickable = false
         }
     }
 
