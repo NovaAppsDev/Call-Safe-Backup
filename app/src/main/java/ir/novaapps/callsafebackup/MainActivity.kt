@@ -34,6 +34,11 @@ class MainActivity : AppCompatActivity() {
                     binding.topAppBar.isVisible = false
                 }
 
+                R.id.permissionFragment->{
+                    binding.navigationBottom.isVisible = false
+                    binding.topAppBar.isVisible = false
+                }
+
                 else->{
                     binding.navigationBottom.isVisible = true
                     binding.topAppBar.isVisible = true

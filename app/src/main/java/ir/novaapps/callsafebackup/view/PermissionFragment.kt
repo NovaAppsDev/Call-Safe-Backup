@@ -46,6 +46,18 @@ class PermissionFragment : BaseFragment<PermissionFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_CALL_LOG
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+        ){
+            performBackup()
+        }
         binding.apply {
             btnGetAllPermission.setOnClickListener{
                 checkContactPermission()
@@ -147,8 +159,14 @@ class PermissionFragment : BaseFragment<PermissionFragmentBinding>() {
     }
 
     private fun performBackup() {
-        // اجرای کد اصلی برای گرفتن بکاپ
-        findNavController().navigate(PermissionFragmentDirections.actionPermissionFragmentToHomeFragment())
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.permissionFragment, true) // حذف صفحه PermissionFragment
+            .build()
+
+        findNavController().navigate(
+            PermissionFragmentDirections.actionPermissionFragmentToHomeFragment(),
+            navOptions
+        )
     }
 
     override fun onRequestPermissionsResult(

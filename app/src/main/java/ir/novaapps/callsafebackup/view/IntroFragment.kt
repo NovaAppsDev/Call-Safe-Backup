@@ -41,7 +41,7 @@ class IntroFragment : BaseFragment<IntroFragmentBinding>() {
                 val navOptions = NavOptions.Builder()
                     .setPopUpTo(R.id.introFragment, inclusive = true)
                     .build()
-                findNavController().navigate(R.id.homeFragment, null, navOptions)
+                findNavController().navigate(R.id.permissionFragment, null, navOptions)
 
             }
         }
