@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/homeFragment"
-        android:title="Home"
+        android:title="خانه"
         android:icon="@drawable/icon_home" />
 
     <item android:id="@+id/contactFragment"
-        android:title="Contacts"
+        android:title="مخاطبین"
         android:icon="@drawable/icon_contact" />
 
     <item android:id="@+id/callLogFragment"
-        android:title="Call Logs"
+        android:title="گزارش تماس"
         android:icon="@drawable/icon_call_log" />
 
     <item android:id="@+id/profileFragment"
-        android:title="Profile"
+        android:title="پروفایل"
         android:icon="@drawable/icon_profile" />
 </menu>

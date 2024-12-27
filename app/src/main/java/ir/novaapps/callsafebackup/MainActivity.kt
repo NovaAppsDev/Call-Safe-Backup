@@ -31,10 +31,12 @@ class MainActivity : AppCompatActivity() {
             when(destination.id){
                 R.id.introFragment->{
                     binding.navigationBottom.isVisible = false
+                    binding.topAppBar.isVisible = false
                 }
 
                 else->{
                     binding.navigationBottom.isVisible = true
+                    binding.topAppBar.isVisible = true
                 }
             }
         }
