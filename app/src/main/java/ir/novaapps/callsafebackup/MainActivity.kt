@@ -5,7 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ir.novaapps.callsafebackup.databinding.ActivityMainBinding
 
@@ -18,11 +20,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+
+        navHostFragment.navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when(destination.id){
+                R.id.introFragment->{
+                    binding.navigationBottom.isVisible = false
+                }
+
+                else->{
+                    binding.navigationBottom.isVisible = true
+                }
+            }
+        }
+
+        binding.navigationBottom.setupWithNavController(navHostFragment.navController)
+
         setContentView(binding.root)
     }
 
