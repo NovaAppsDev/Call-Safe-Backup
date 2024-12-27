@@ -5,8 +5,9 @@ import android.database.Cursor
 import android.provider.ContactsContract
 import ir.novaapps.callsafebackup.data.domain.model.ContactModel
 import ir.novaapps.callsafebackup.data.domain.repository.ContactRepository
+import javax.inject.Inject
 
-class ContactRepositoryImpl : ContactRepository {
+class ContactRepositoryImpl @Inject constructor() : ContactRepository {
 
     override suspend fun getPhoneContacts(context: Context): List<ContactModel> {
         val contactsList = mutableListOf<ContactModel>()
