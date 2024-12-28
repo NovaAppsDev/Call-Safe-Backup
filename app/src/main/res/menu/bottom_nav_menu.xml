@@ -11,7 +11,7 @@
 
     <item android:id="@+id/callLogFragment"
         android:title="گزارش تماس"
-        android:icon="@drawable/icon_call_log" />
+        android:icon="@drawable/icon_call_outgoing" />
 
     <item android:id="@+id/profileFragment"
         android:title="پروفایل"

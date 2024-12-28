@@ -56,12 +56,12 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         //Animations
-        show_fab_1 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab1_show);
-        hide_fab_1 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab1_hide);
-        show_fab_2 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab2_show);
-        hide_fab_2 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab2_hide);
-        show_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_show);
-        hide_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_hide);
+        show_fab_1 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab1_show)
+        hide_fab_1 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab1_hide)
+        show_fab_2 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab2_show)
+        hide_fab_2 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab2_hide)
+        show_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_show)
+        hide_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_hide)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
