@@ -15,7 +15,7 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="8dp"
-        android:src="@drawable/icon_export"
+        android:src="@drawable/icon_export_storage"
         android:visibility="invisible" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -29,7 +29,7 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="8dp"
-        android:src="@drawable/icon_import"
+        android:src="@drawable/icon_export_google_drive"
         android:visibility="invisible" />
 
     <de.hdodenhof.circleimageview.CircleImageView
