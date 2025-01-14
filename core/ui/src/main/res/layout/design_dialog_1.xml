@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="38dp"
+        android:background="@drawable/bg_card_dialog_1"
+        android:layoutDirection="rtl"
+        android:padding="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtTitleDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Title Dialog"
+            android:textColor="@color/textTitleColor"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/btnCloseDialog"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/icon_close" />
+
+        <TextView
+            android:id="@+id/txtEditName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTitleDialog"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="نام فایل"
+            android:textColor="@color/textTitleColor"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edit_name_file"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@id/txtEditName"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_edit_1"
+            android:hint="نام فایل را وارد کنید"
+            android:paddingHorizontal="8dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtChooseFormat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_name_file"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="انتخاب فرمت فایل"
+            android:textColor="@color/textTitleColor"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/snip_select_format"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@+id/txtChooseFormat"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_edit_1" />
+
+        <TextView
+            android:id="@+id/txtChoosePath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/snip_select_format"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="انتخاب محل ذخیره فایل"
+            android:textColor="@color/textTitleColor"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edit_choose_path"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@id/txtChoosePath"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/bg_edit_1"
+            android:enabled="false"
+            android:hint="آدرس ذخیره سازی فایل"
+            android:paddingStart="8dp"
+            android:paddingEnd="36dp"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/img_open_folder"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignTop="@+id/edit_choose_path"
+            android:layout_alignBottom="@+id/edit_choose_path"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/icon_folder" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_choose_path"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_btn_ok_1"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="ذخیره"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_choose_path"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_btn_cancel_1"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="صرف نظر"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

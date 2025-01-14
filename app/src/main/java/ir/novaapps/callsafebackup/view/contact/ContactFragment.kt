@@ -1,6 +1,8 @@
 package ir.novaapps.callsafebackup.view.contact
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,28 +10,34 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.internal.Contexts.getApplication
 import ir.novaapps.callsafebackup.R
+import ir.novaapps.callsafebackup.data.domain.model.ContactModel
 import ir.novaapps.callsafebackup.databinding.ContactFragmentBinding
 import ir.novaapps.callsafebackup.utils.BaseFragment
+import ir.novaapps.callsafebackup.utils.events.EventBus
+import ir.novaapps.callsafebackup.utils.events.Events
 import ir.novaapps.callsafebackup.viewmodel.MainViewModel
+import ir.novaapps.ui.DialogSelectFile
 import kotlinx.coroutines.launch
 
 
+
 @AndroidEntryPoint
-class ContactFragment : BaseFragment<ContactFragmentBinding>() {
+class ContactFragment : BaseFragment<ContactFragmentBinding>(){
 
     override val bindingInflater: (inflater: LayoutInflater) -> ContactFragmentBinding
         get() = ContactFragmentBinding::inflate
 
     private val mainViewModel: MainViewModel by viewModels()
 
+    private var listContact: List<ContactModel> = emptyList()
     private var contactAdapter: ContactAdapter = ContactAdapter()
 
     private var FAB_Status = false
@@ -41,6 +49,7 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
     var hide_fab_2: Animation? = null
     var show_fab_3: Animation? = null
     var hide_fab_3: Animation? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +76,7 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mainViewModel.contacts.collect { list ->
                     contactAdapter.setUsers(list)
+                    listContact = list
                     if (list.isEmpty()) {
                         updateUi(true)
                     } else {
@@ -78,24 +88,50 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
 
         binding.apply {
             fab.setOnClickListener {
-                if (FAB_Status ==false){
+                if (FAB_Status == false) {
                     expandFAB()
-                }else{
+                } else {
                     hideFAB()
                 }
             }
 
             layoutInclude.fab1.setOnClickListener {
-                Toast.makeText(requireContext(),"Click on FAB 1" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Click on FAB 1", Toast.LENGTH_SHORT).show()
                 hideFAB()
             }
             layoutInclude.fab2.setOnClickListener {
-                Toast.makeText(requireContext(),"Click on FAB 2" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Click on FAB 2", Toast.LENGTH_SHORT).show()
                 hideFAB()
             }
             layoutInclude.fab3.setOnClickListener {
-                Toast.makeText(requireContext(),"Click on FAB 3" , Toast.LENGTH_SHORT).show()
                 hideFAB()
+                    val dialog = DialogSelectFile()
+                    dialog.show(childFragmentManager, "CustomDialog")
+
+            }
+        }
+        mainViewModel.exportContactResult.observe(viewLifecycleOwner){result->
+            Toast.makeText(requireContext(), result.toString(), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch {
+            EventBus.subscribe<Events.IsResult> {isResult->
+                mainViewModel.exportContactJson(
+                    listContact,
+                    Uri.parse(isResult.isResult),
+                    isResult.typeFormat
+                )
+            }
+        }
+
+        mainViewModel.isLoading.observe(viewLifecycleOwner){isLoading->
+            if (isLoading){
+                binding.progressBar.isVisible = true
+            }else{
+                binding.progressBar.isVisible = false
             }
         }
     }
@@ -181,6 +217,5 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>() {
             layoutInclude.fab3.isClickable = false
         }
     }
-
 
 }

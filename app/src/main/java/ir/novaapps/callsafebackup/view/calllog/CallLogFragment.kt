@@ -1,7 +1,6 @@
 package ir.novaapps.callsafebackup.view.calllog
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,19 +12,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ir.novaapps.callsafebackup.R
 import ir.novaapps.callsafebackup.databinding.CallLogFragmentBinding
-import ir.novaapps.callsafebackup.databinding.ContactFragmentBinding
-import ir.novaapps.callsafebackup.databinding.IntroFragmentBinding
 import ir.novaapps.callsafebackup.utils.BaseFragment
-import ir.novaapps.callsafebackup.view.contact.ContactAdapter
 import ir.novaapps.callsafebackup.viewmodel.MainViewModel
-import kotlinx.coroutines.delay
+import ir.novaapps.ui.Dialog
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -49,13 +42,12 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
     var hide_fab_3: Animation? = null
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        mainViewModel.loadCallLogs(requireContext(),0)
+        mainViewModel.loadCallLogs(requireContext(), 0)
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -75,6 +67,7 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mainViewModel.callLogs.collect { list ->
                     callLogAdapter.setUsers(list)
+
                     if (list.isEmpty()) {
                         updateUi(true)
                     } else {
@@ -86,24 +79,37 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
 
         binding.apply {
             fab.setOnClickListener {
-                if (FAB_Status ==false){
+                if (FAB_Status == false) {
                     expandFAB()
-                }else{
+                } else {
                     hideFAB()
                 }
             }
 
             layoutInclude.fab1.setOnClickListener {
-                Toast.makeText(requireContext(),"Click on FAB 1" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Click on FAB 1", Toast.LENGTH_SHORT).show()
                 hideFAB()
             }
             layoutInclude.fab2.setOnClickListener {
-                Toast.makeText(requireContext(),"Click on FAB 2" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Click on FAB 2", Toast.LENGTH_SHORT).show()
                 hideFAB()
             }
             layoutInclude.fab3.setOnClickListener {
-                Toast.makeText(requireContext(),"Click on FAB 3" , Toast.LENGTH_SHORT).show()
                 hideFAB()
+                Dialog.showAlertDialogInsertInfo(
+                    requireContext(),
+                    "بک آپ گزارش تماس",
+                    selectItemSniper = {
+                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                    },
+                    onClickOk = {
+                        Toast.makeText(requireContext(), "onClickOk", Toast.LENGTH_SHORT).show()
+                    },
+                    onClickOpenFile = {
+                        Toast.makeText(requireContext(), "onClickOpenFile", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                )
             }
         }
     }
