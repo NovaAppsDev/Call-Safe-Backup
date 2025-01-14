@@ -1,6 +1,8 @@
 package ir.novaapps.callsafebackup.view.calllog
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -15,10 +18,15 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ir.novaapps.callsafebackup.R
+import ir.novaapps.callsafebackup.data.domain.model.CallLogModel
+import ir.novaapps.callsafebackup.data.domain.model.ContactModel
 import ir.novaapps.callsafebackup.databinding.CallLogFragmentBinding
 import ir.novaapps.callsafebackup.utils.BaseFragment
+import ir.novaapps.callsafebackup.utils.events.EventBus
+import ir.novaapps.callsafebackup.utils.events.Events
 import ir.novaapps.callsafebackup.viewmodel.MainViewModel
 import ir.novaapps.ui.Dialog
+import ir.novaapps.ui.DialogSelectFile
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -28,6 +36,7 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
         get() = CallLogFragmentBinding::inflate
 
     private val mainViewModel: MainViewModel by viewModels()
+    private var listCallLog: List<CallLogModel> = emptyList()
 
     private var callLogAdapter: CallLogAdapter = CallLogAdapter()
 
@@ -67,7 +76,7 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 mainViewModel.callLogs.collect { list ->
                     callLogAdapter.setUsers(list)
-
+                    listCallLog = list
                     if (list.isEmpty()) {
                         updateUi(true)
                     } else {
@@ -96,23 +105,35 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
             }
             layoutInclude.fab3.setOnClickListener {
                 hideFAB()
-                Dialog.showAlertDialogInsertInfo(
-                    requireContext(),
-                    "بک آپ گزارش تماس",
-                    selectItemSniper = {
-                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                    },
-                    onClickOk = {
-                        Toast.makeText(requireContext(), "onClickOk", Toast.LENGTH_SHORT).show()
-                    },
-                    onClickOpenFile = {
-                        Toast.makeText(requireContext(), "onClickOpenFile", Toast.LENGTH_SHORT)
-                            .show()
-                    }
+                val dialog = DialogSelectFile("بک آپ گزارش تماس")
+                dialog.show(childFragmentManager, "CallLogDialog")
+            }
+        }
+
+        lifecycleScope.launch {
+            EventBus.subscribe<Events.IsResult> { isResult ->
+                mainViewModel.exportCallLog(
+                    listCallLog,
+                    Uri.parse(isResult.isResult),
+                    isResult.typeFormat
                 )
             }
         }
+        mainViewModel.exportCallLogResult.observe(viewLifecycleOwner) { isResult ->
+            Log.e("45456", "onViewCreated: $isResult" )
+            Toast.makeText(requireContext(), isResult.toString(), Toast.LENGTH_SHORT).show()
+        }
+
+        mainViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            Log.d("45456", "onViewCreated: $isLoading")
+            if (isLoading) {
+                binding.progressBar.isVisible = true
+            } else {
+                binding.progressBar.isVisible = false
+            }
+        }
     }
+
 
     private fun updateUi(emptyLists: Boolean) {
         binding.apply {

@@ -24,7 +24,9 @@ import ir.novaapps.callsafebackup.utils.events.Events
 import kotlinx.coroutines.launch
 
 
-class DialogSelectFile : DialogFragment() {
+class DialogSelectFile(
+   private val titleDialog:String
+) : DialogFragment() {
 
     private lateinit var txtTitleDialog: TextView
     private lateinit var buttonSelectPath: ImageView
@@ -49,6 +51,7 @@ class DialogSelectFile : DialogFragment() {
         btnOk = view.findViewById(R.id.btn_ok)
         btnCancel = view.findViewById(R.id.btn_cancel)
 
+        txtTitleDialog.setText(titleDialog)
 
         val items = listOf("انتخاب فرمت فایل","JSON", "XML")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
@@ -93,6 +96,7 @@ class DialogSelectFile : DialogFragment() {
             val selectedPath = editTextPath.text.toString()
             if (selectedPath.isNotEmpty()) {
                 if (selectedFormatFile!=0){
+                    Log.e("45456", "onCreateDialog: LLL", )
                     sendUri(selectedPath,selectedFormatFile)
                 }else{
                     Toast.makeText(requireContext(), "فرمت فایل را انتخاب کنید", Toast.LENGTH_SHORT).show()

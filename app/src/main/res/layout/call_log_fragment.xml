@@ -37,4 +37,11 @@
         android:id="@+id/layoutInclude"
         layout="@layout/fab_bottom_custome" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

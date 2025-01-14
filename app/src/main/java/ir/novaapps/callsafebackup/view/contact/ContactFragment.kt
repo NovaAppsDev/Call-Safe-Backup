@@ -105,21 +105,18 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>(){
             }
             layoutInclude.fab3.setOnClickListener {
                 hideFAB()
-                    val dialog = DialogSelectFile()
-                    dialog.show(childFragmentManager, "CustomDialog")
+                val dialog = DialogSelectFile("بک آپ مخاطبین")
+                dialog.show(childFragmentManager, "CustomDialog")
 
             }
         }
         mainViewModel.exportContactResult.observe(viewLifecycleOwner){result->
             Toast.makeText(requireContext(), result.toString(), Toast.LENGTH_SHORT).show()
         }
-    }
 
-    override fun onResume() {
-        super.onResume()
         lifecycleScope.launch {
             EventBus.subscribe<Events.IsResult> {isResult->
-                mainViewModel.exportContactJson(
+                mainViewModel.exportContact(
                     listContact,
                     Uri.parse(isResult.isResult),
                     isResult.typeFormat
@@ -135,6 +132,7 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>(){
             }
         }
     }
+
 
     private fun updateUi(emptyLists: Boolean) {
         binding.apply {
