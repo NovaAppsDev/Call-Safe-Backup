@@ -4,34 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
+    android:id="@+id/home"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.IntroFragment">
 
     <RelativeLayout
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@drawable/bg_top_app_bar">
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/icon_menu"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"/>
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/icon_app"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="16dp"/>
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/icon_change_theme"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"/>
-    </RelativeLayout>
+        android:layout_height="?actionBarSize"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardResult"

@@ -43,3 +43,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 navigation= {id="androidx.navigation.safeargs.kotlin",version.ref="navigation"}
 hiltAndroid={id ="com.google.dagger.hilt.android",version.ref="hilt"}
 ksp={id="com.google.devtools.ksp",version.ref="ksp"}
+android-library = { id = "com.android.library", version.ref = "agp" }

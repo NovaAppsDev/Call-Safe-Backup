@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CallSafe Backup"
 include(":app")
+include(":core:ui")

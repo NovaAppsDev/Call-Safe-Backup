@@ -9,7 +9,7 @@
         android:id="@+id/introFragment"
         android:name="ir.novaapps.callsafebackup.view.IntroFragment"
         android:label="intro_fragment"
-        tools:layout="@layout/intro_fragment" >
+        tools:layout="@layout/intro_fragment">
         <action
             android:id="@+id/action_introFragment_to_permissionFragment"
             app:destination="@id/permissionFragment" />
@@ -18,14 +18,29 @@
         android:id="@+id/homeFragment"
         android:name="ir.novaapps.callsafebackup.view.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/home_fragment"/>
+        tools:layout="@layout/home_fragment" />
     <fragment
-        tools:layout="@layout/permission_fragment"
         android:id="@+id/permissionFragment"
         android:name="ir.novaapps.callsafebackup.view.PermissionFragment"
-        android:label="PermissionFragment" >
+        android:label="PermissionFragment"
+        tools:layout="@layout/permission_fragment">
         <action
             android:id="@+id/action_permissionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="ir.novaapps.callsafebackup.view.contact.ContactFragment"
+        android:label="ContactFragment"
+        tools:layout="@layout/contact_fragment" />
+    <fragment
+        android:id="@+id/callLogFragment"
+        android:name="ir.novaapps.callsafebackup.view.calllog.CallLogFragment"
+        android:label="CallLogFragment"
+        tools:layout="@layout/call_log_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ir.novaapps.callsafebackup.view.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/profile_fragment" />
 </navigation>
