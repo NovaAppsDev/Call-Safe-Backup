@@ -11,15 +11,17 @@ import javax.inject.Inject
 class ExportCallLogToUriUseCase @Inject constructor(
     @ApplicationContext val context: Context
 ) {
-    suspend operator fun invoke(listCallLog:List<CallLogModel> ,uri:Uri,typeFormat:Int) : String{
+    suspend operator fun invoke(listCallLog:List<CallLogModel> ,uri:Uri?,typeFormat:Int) : String{
         if (typeFormat==1){
             return ExportBackup.exportCallLogToJson(
+                context,
                 context.contentResolver,
                 listCallLog,
                 uri
             )
         }else{
             return ExportBackup.exportCallLogToXml(
+                context,
                 context.contentResolver,
                 listCallLog,
                 uri
