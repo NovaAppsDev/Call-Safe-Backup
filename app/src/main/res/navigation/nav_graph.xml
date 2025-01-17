@@ -39,8 +39,8 @@
         android:label="CallLogFragment"
         tools:layout="@layout/call_log_fragment" />
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="ir.novaapps.callsafebackup.view.ProfileFragment"
-        android:label="ProfileFragment"
-        tools:layout="@layout/profile_fragment" />
+        android:id="@+id/historyFragment"
+        android:name="ir.novaapps.callsafebackup.view.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/history_fragment" />
 </navigation>

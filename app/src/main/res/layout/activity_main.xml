@@ -17,21 +17,22 @@
             android:layout_height="?actionBarSize"
             android:background="@drawable/bg_top_app_bar">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/icon_menu"
+                android:id="@+id/btnShowInfo"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/icon_info"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"/>
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/icon_app"
+                android:src="@drawable/logo_app"
                 android:layout_centerInParent="true"
                 android:layout_marginStart="16dp"/>
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/icon_change_theme"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/icon_dark_theme"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="16dp"/>
@@ -48,11 +49,11 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigationBottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:layout_marginHorizontal="18dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_bottom_nav_bar"
-            app:itemIconSize="32dp"
+            app:itemIconSize="24dp"
             app:itemIconTint="@color/onPrimaryColor"
             app:itemTextColor="@color/onPrimaryColor"
             app:layout_constraintBottom_toBottomOf="parent"
