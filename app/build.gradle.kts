@@ -9,13 +9,13 @@ plugins {
 
 android {
     namespace = "ir.novaapps.callsafebackup"
-    compileSdk = 35
+    compileSdk = 34
     viewBinding.enable = true
 
     defaultConfig {
         applicationId = "ir.novaapps.callsafebackup"
         minSdk = 28
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -58,6 +58,14 @@ dependencies {
     // Hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+
+
+    // Circle Image
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    implementation ("com.google.code.gson:gson:2.10.1")
+
+    implementation (project(":core:ui"))
 
 
 

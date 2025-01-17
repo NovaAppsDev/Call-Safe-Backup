@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeFragment"
+        android:title="خانه"
+        android:icon="@drawable/icon_home" />
+
+    <item android:id="@+id/contactFragment"
+        android:title="مخاطبین"
+        android:icon="@drawable/icon_contact" />
+
+    <item android:id="@+id/callLogFragment"
+        android:title="گزارش تماس"
+        android:icon="@drawable/icon_call_outgoing" />
+
+    <item android:id="@+id/profileFragment"
+        android:title="پروفایل"
+        android:icon="@drawable/icon_profile" />
+</menu>

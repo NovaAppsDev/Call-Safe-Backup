@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contacts"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="24dp"
+    android:layout_marginTop="24dp"
+    tools:context=".view.IntroFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgContact"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignBottom="@+id/layout1"
+        android:layout_alignTop="@+id/layout1"
+        android:src="@drawable/img_person" />
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_toEndOf="@+id/imgContact"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNameContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iransansweb_fanum"
+            android:text="Name Contact"
+            android:textColor="@color/textContactColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtNumberContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iransansweb_fanum"
+            android:text="Name Contact"
+            android:textColor="@color/textContactColor"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</RelativeLayout>
