@@ -11,6 +11,7 @@ import java.util.zip.ZipOutputStream
 class FileUtils {
 
     companion object{
+
         fun clearFolder(folder: File): Boolean {
             if (folder.exists() && folder.isDirectory) {
                 folder.listFiles()?.forEach { file ->

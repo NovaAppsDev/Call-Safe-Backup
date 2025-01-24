@@ -40,7 +40,7 @@
         tools:layout="@layout/call_log_fragment" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="ir.novaapps.callsafebackup.view.HistoryFragment"
+        android:name="ir.novaapps.callsafebackup.view.history.HistoryFragment"
         android:label="HistoryFragment"
         tools:layout="@layout/history_fragment" />
 </navigation>

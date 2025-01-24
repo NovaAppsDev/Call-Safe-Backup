@@ -21,6 +21,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -98,12 +101,15 @@ class MainViewModel @Inject constructor(
                 exportCallLogToUriUseCase(callLog,null,1)
                 Log.i("MainViewModel", "Export All Lists")
 
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                val formattedDate = dateFormat.format(Date(System.currentTimeMillis()))
+
                 // Zip Folder
                 FileUtils.zipSingleFolder(
                     context,
                     dirFolder,
                     context.filesDir.absolutePath,
-                    "zip_backup_${System.currentTimeMillis()}"
+                    "backup_${formattedDate}"
                 )
                 Log.i("MainViewModel", "Zip All file")
 

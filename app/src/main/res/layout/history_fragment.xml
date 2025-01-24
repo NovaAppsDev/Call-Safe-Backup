@@ -5,6 +5,20 @@
     android:layout_height="match_parent"
     android:id="@+id/profile"
     tools:context=".view.IntroFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginBottom="90dp"
+            android:id="@+id/historyListBackup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topAppBar"/>
+    </RelativeLayout>
 
 </RelativeLayout>
