@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundMainColor"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,27 +16,34 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/bg_top_app_bar">
+            android:background="@drawable/bg_top_app_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <ImageView
                 android:id="@+id/btnShowInfo"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@drawable/icon_info"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                android:src="@drawable/icon_info" />
+
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/logo_app"
                 android:layout_centerInParent="true"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                android:src="@drawable/logo_app" />
+
             <ImageView
+                android:id="@+id/btnChangeTheme"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@drawable/icon_dark_theme"
-                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="16dp"/>
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/icon_dark_theme" />
         </RelativeLayout>
 
         <androidx.fragment.app.FragmentContainerView

@@ -4,20 +4,21 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="primaryColor">#93CB80</color>
+    <color name="primaryColor">#222224</color>
     <color name="onPrimaryColor">#ffff</color>
 
-    <color name="backgroundMainColor">#ffff</color>
-    <color name="backgroundItemBackup">#ffff</color>
+    <color name="backgroundMainColor">#181818</color>
+    <color name="backgroundItemBackup">#222224</color>
 
-    <color name="iconColor">#FF000000</color>
-    <color name="dividerColor">#93CB80</color>
-
-    <color name="textContactColor">#676578</color>
+    <color name="iconColor">#ffff</color>
+    <color name="dividerColor">#ffff</color>
 
 
-    <color name="statusBarColor">#93CB80</color>
-    <color name="backgroundNavigationBar">#ffff</color>
+    <color name="textContactColor">#ffff</color>
+
+
+    <color name="statusBarColor">#222224</color>
+    <color name="backgroundNavigationBar">#222224</color>
     <color name="backgroundButtonMain">#4EBD28</color>
     <color name="light_blue_400">#FF29B6F6</color>
     <color name="light_blue_600">#FF039BE5</color>
