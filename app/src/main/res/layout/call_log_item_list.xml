@@ -15,7 +15,9 @@
         android:layout_height="56dp"
         android:layout_alignParentEnd="true"
         android:layout_margin="8dp"
-        android:src="@drawable/img_person"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon_circle_person"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

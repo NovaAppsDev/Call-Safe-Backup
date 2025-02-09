@@ -28,9 +28,8 @@ import ir.novaapps.ui.DialogSelectFile
 import kotlinx.coroutines.launch
 
 
-
 @AndroidEntryPoint
-class ContactFragment : BaseFragment<ContactFragmentBinding>(){
+class ContactFragment : BaseFragment<ContactFragmentBinding>() {
 
     override val bindingInflater: (inflater: LayoutInflater) -> ContactFragmentBinding
         get() = ContactFragmentBinding::inflate
@@ -72,19 +71,18 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>(){
         show_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_show)
         hide_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_hide)
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mainViewModel.contacts.collect { list ->
-                    contactAdapter.setUsers(list)
-                    listContact = list
-                    if (list.isEmpty()) {
-                        updateUi(true)
-                    } else {
-                        updateUi(false)
-                    }
-                }
+
+        mainViewModel.contacts.observe(viewLifecycleOwner) { list ->
+            contactAdapter.setUsers(list)
+            listContact = list
+            if (list.isEmpty()) {
+                updateUi(true)
+            } else {
+                updateUi(false)
             }
         }
+
+
 
         binding.apply {
             fab.setOnClickListener {
@@ -110,12 +108,12 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>(){
 
             }
         }
-        mainViewModel.exportContactResult.observe(viewLifecycleOwner){result->
+        mainViewModel.exportContactResult.observe(viewLifecycleOwner) { result ->
             Toast.makeText(requireContext(), result.toString(), Toast.LENGTH_SHORT).show()
         }
 
         lifecycleScope.launch {
-            EventBus.subscribe<Events.IsResult> {isResult->
+            EventBus.subscribe<Events.IsResult> { isResult ->
                 mainViewModel.exportContact(
                     listContact,
                     Uri.parse(isResult.isResult),
@@ -124,10 +122,10 @@ class ContactFragment : BaseFragment<ContactFragmentBinding>(){
             }
         }
 
-        mainViewModel.isLoading.observe(viewLifecycleOwner){isLoading->
-            if (isLoading){
+        mainViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
                 binding.progressBar.isVisible = true
-            }else{
+            } else {
                 binding.progressBar.isVisible = false
             }
         }

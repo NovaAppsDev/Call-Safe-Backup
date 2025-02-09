@@ -3,11 +3,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="primaryColor">#93CB80</color>
+    <color name="onPrimaryColor">#ffff</color>
 
-    <color name="greenColor">#93CB80</color>
+    <color name="backgroundMainColor">#ffff</color>
+    <color name="backgroundItemBackup">#ffff</color>
+
+    <color name="strokeEditTextColor">#595959</color>
+    <color name="iconColor">#FF000000</color>
+
 
 
     <color name="strokeCardColor">#93CB80</color>
-    <color name="strokeEditTextColor">#595959</color>
+
     <color name="textTitleColor">#676578</color>
 </resources>

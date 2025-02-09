@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     android:id="@+id/home"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.IntroFragment">
 
@@ -91,15 +92,18 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnFastBackup"
         android:layout_marginTop="72dp"
         android:layout_below="@+id/cardResult"
         android:layout_centerHorizontal="true"
         android:layout_width="185dp"
         android:layout_height="185dp"
         android:textColor="@color/onPrimaryColor"
-        android:text="Go"
-        android:textSize="56sp"
+        android:text="بکاپ کلی"
+        android:fontFamily="@font/iransansweb_fanum"
+        android:textSize="46sp"
         android:textStyle="bold"
         android:background="@drawable/bg_button_main"/>
 

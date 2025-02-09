@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="primaryColor">#222224</color>
+    <color name="onPrimaryColor">#ffff</color>
+
+    <color name="backgroundMainColor">#181818</color>
+    <color name="backgroundItemBackup">#222224</color>
+
+    <color name="iconColor">#ffff</color>
+    <color name="dividerColor">#ffff</color>
+
+
+    <color name="textContactColor">#ffff</color>
+
+
+    <color name="statusBarColor">#222224</color>
+    <color name="backgroundNavigationBar">#222224</color>
+    <color name="backgroundButtonMain">#4EBD28</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primaryColor">#222224</color>
+    <color name="onPrimaryColor">#ffff</color>
+
+    <color name="backgroundMainColor">#181818</color>
+    <color name="backgroundItemBackup">#222224</color>
+
+    <color name="strokeEditTextColor">#FFFFFFFF</color>
+    <color name="iconColor">#ffff</color>
+
+
+    <color name="strokeCardColor">#93CB80</color>
+    <color name="textTitleColor">#676578</color>
+</resources>

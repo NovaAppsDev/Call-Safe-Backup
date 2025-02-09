@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:text="Title Dialog"
-            android:textColor="@color/textTitleColor"
+            android:textColor="@color/onPrimaryColor"
             android:textSize="20sp" />
 
         <ImageView
@@ -43,7 +43,7 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/roboto_regular"
             android:text="نام فایل"
-            android:textColor="@color/textTitleColor"
+            android:textColor="@color/onPrimaryColor"
             android:textSize="16sp" />
 
         <EditText
@@ -55,6 +55,7 @@
             android:background="@drawable/bg_edit_1"
             android:hint="نام فایل را وارد کنید"
             android:paddingHorizontal="8dp"
+            android:textColorHint="@color/onPrimaryColor"
             android:textSize="14sp" />
 
         <TextView
@@ -65,7 +66,7 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/roboto_regular"
             android:text="انتخاب فرمت فایل"
-            android:textColor="@color/textTitleColor"
+            android:textColor="@color/onPrimaryColor"
             android:textSize="16sp" />
 
         <Spinner
@@ -84,7 +85,7 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/roboto_regular"
             android:text="انتخاب محل ذخیره فایل"
-            android:textColor="@color/textTitleColor"
+            android:textColor="@color/onPrimaryColor"
             android:textSize="16sp" />
 
         <EditText
@@ -93,6 +94,7 @@
             android:layout_height="42dp"
             android:layout_below="@id/txtChoosePath"
             android:layout_marginTop="3dp"
+            android:textColorHint="@color/onPrimaryColor"
             android:background="@drawable/bg_edit_1"
             android:enabled="false"
             android:hint="آدرس ذخیره سازی فایل"
@@ -137,7 +139,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:text="صرف نظر"
-            android:textColor="@color/black"
+            android:textColor="@color/onPrimaryColor"
             android:textSize="14sp" />
 
     </RelativeLayout>
