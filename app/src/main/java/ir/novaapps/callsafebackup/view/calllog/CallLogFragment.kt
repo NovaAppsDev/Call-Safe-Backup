@@ -72,19 +72,18 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
         show_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_show)
         hide_fab_3 = AnimationUtils.loadAnimation(requireContext(), R.anim.fab3_hide)
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mainViewModel.callLogs.collect { list ->
-                    callLogAdapter.setUsers(list)
-                    listCallLog = list
-                    if (list.isEmpty()) {
-                        updateUi(true)
-                    } else {
-                        updateUi(false)
-                    }
-                }
+
+        mainViewModel.callLogs.observe(viewLifecycleOwner) { list ->
+            callLogAdapter.setUsers(list)
+            listCallLog = list
+            if (list.isEmpty()) {
+                updateUi(true)
+            } else {
+                updateUi(false)
             }
         }
+
+
 
         binding.apply {
             fab.setOnClickListener {
@@ -120,7 +119,7 @@ class CallLogFragment : BaseFragment<CallLogFragmentBinding>() {
             }
         }
         mainViewModel.exportCallLogResult.observe(viewLifecycleOwner) { isResult ->
-            Log.e("45456", "onViewCreated: $isResult" )
+            Log.e("45456", "onViewCreated: $isResult")
             Toast.makeText(requireContext(), isResult.toString(), Toast.LENGTH_SHORT).show()
         }
 

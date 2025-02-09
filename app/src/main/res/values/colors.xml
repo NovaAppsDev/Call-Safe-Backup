@@ -7,6 +7,12 @@
     <color name="primaryColor">#93CB80</color>
     <color name="onPrimaryColor">#ffff</color>
 
+    <color name="backgroundMainColor">#ffff</color>
+    <color name="backgroundItemBackup">#ffff</color>
+
+    <color name="iconColor">#FF000000</color>
+    <color name="dividerColor">#93CB80</color>
+
     <color name="textContactColor">#676578</color>
 
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.IntroFragment">
+
+    <RelativeLayout
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/historyListBackup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topAppBar"
+        android:layout_marginBottom="90dp" />
+
+    <LinearLayout
+        android:id="@+id/emptyList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topAppBar"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="@color/textContactColor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="فایلی وجود ندارد"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
